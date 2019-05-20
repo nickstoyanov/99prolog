@@ -14,7 +14,7 @@ is_list([_|_]).
 
 fold_once([], []).
 fold_once([H|T], R) :- is_list(H), fold_once(T, Res), append(H, Res, R).
-fold_once([H|T], [H|R]) :- fold_once(T, R).
+fold_once([H|T], [H|R]) :- not(is_list(H)), fold_once(T, R).
 
 duplicate_element(_, 0, []).
 duplicate_element(X, N, [X|R]) :- N > 0, N1 is N - 1, duplicate_element(X, N1, R).

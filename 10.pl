@@ -6,10 +6,10 @@
 %     ?- encode([a,a,a,a,b,c,c,a,a,d,e,e,e,e],X).
 %     X = [[4,a],[1,b],[2,c],[2,a],[1,d][4,e]]
 
-get_first([H|T], H).
+get_first([H|_], H).
 
 len([], 0).
-len([H|T], N) :- len(T, N1), N is N1 + 1.
+len([_|T], N) :- len(T, N1), N is N1 + 1.
 
 split_on_different_element([X], [X], []).
 split_on_different_element([X, Y|T], [X], [Y|T]) :- X \= Y, !.
